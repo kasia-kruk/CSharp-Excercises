@@ -19,6 +19,32 @@ namespace ConsoleApp1
             Console.ReadLine();
         }
 
+        public static int Two7sNextToEachOther(int[] numbers)
+        {
+            int counter = 0;
+            for (int i = 1; i < numbers.Length; i++)
+            {
+                if (numbers[i] == 7 && numbers[i-1] == 7)
+                {
+                    counter++;
+                }
+            }
+            return counter;
+        }
+
+        public static int TheBiggestNumber(int[] numbers)
+        {
+            int result = numbers[0];
+            for (int i = 1; i < numbers.Length; i++)
+            {
+                if (numbers[i]>result)
+                {
+                    result = numbers[i];
+                }
+            }
+            return result;
+        }
+
         public static int[] SortArrayAscending(int[] numbers)
         {
             bool isChanged;

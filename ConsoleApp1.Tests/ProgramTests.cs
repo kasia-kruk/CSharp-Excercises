@@ -263,5 +263,35 @@ namespace ConsoleApp1.Tests
             //assert
             Assert.AreEqual(expected, result);
         }
+
+        [DataTestMethod]
+        [DataRow(190, 291, 145, 209, 280, 291)]
+        [DataRow(-9, -2, -7, -8, -4, -2)]
+        public void TheBiggestNumber_ArrayOfIntsIsGiven_ReturnsTheHighestValue(int a, int b, int c, int d, int e, int expected)
+        {
+            //arrange
+            int[] numbers = { a, b, c, d, e };
+
+            //act
+            int result = Program.TheBiggestNumber(numbers);
+
+            //assert
+            Assert.AreEqual(expected, result);
+        }
+
+        [DataTestMethod]
+        [DataRow(190, 291, 7, 7, 280, 1)]
+        [DataRow(3, 7, 7, 7, 7, 3)]
+        public void Two7sNextToEachOther_ArrayOfIntsIsGiven_ReturnsNumberOf7sNextToEachOther(int a, int b, int c, int d, int e, int expected)
+        {
+            //arrange
+            int[] numbers = { a, b, c, d, e };
+
+            //act
+            int result = Program.Two7sNextToEachOther(numbers);
+
+            //assert
+            Assert.AreEqual(expected, result);
+        }
     }
 }
