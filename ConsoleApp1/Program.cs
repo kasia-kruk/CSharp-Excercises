@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ConsoleApp1
 {
@@ -17,6 +18,92 @@ namespace ConsoleApp1
             PrintMultiplicationTable();
 
             Console.ReadLine();
+        }
+
+        public static string ExtractString(string input)
+        {
+            var splittedInput = input.Split("##");
+            if (splittedInput.Length != 3)
+            {
+                return string.Empty;
+            }
+            return splittedInput[1];
+        }
+
+        public static int[] SieveOfEratosthenes(int n)
+        {
+            if (n<2)
+            {
+                return null;
+            }
+
+            List<int> primeNumbers = new List<int>() { 2 };
+
+            for (int i = 3; i <= n; i++)
+            {
+                bool isPrime = true;
+                for (int j = 2; j < i ; j++)
+                {
+                    if (i % j == 0)
+                    {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                if (isPrime)
+                {
+                    primeNumbers.Add(i);
+                }
+            }
+            return primeNumbers.ToArray();
+        }
+
+        public static string ReturnEvenNumbers()
+        {
+            string output = "";
+            for (int i = 1; i < 100; i++)
+            {
+                if (i%2==0)
+                {
+                    output = output + i + " ";
+                }
+            }
+            return output.Trim();
+        }
+
+        public static bool ThreeIncreasingAdjacent(int[] numbers)
+        {
+            for (int i = 1; i < numbers.Length-1; i++)
+            {
+                if (numbers[i] - numbers[i-1] == 1 && numbers[i + 1] - numbers[i] == 1)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static int DigitalRoot(int number)
+        {
+            string numberAsString = number.ToString();
+            char[] stringAsCharsArray = numberAsString.ToCharArray();
+
+            int digitalRoot = 0;
+
+            while (stringAsCharsArray.Length > 1)
+            {
+                digitalRoot = 0;
+                foreach (var c in stringAsCharsArray)
+                {
+                    digitalRoot += Convert.ToInt32(c.ToString());
+                }
+
+                numberAsString = digitalRoot.ToString();
+                stringAsCharsArray = numberAsString.ToCharArray();
+                
+            }
+
+            return digitalRoot;
         }
 
         public static int Two7sNextToEachOther(int[] numbers)

@@ -293,5 +293,81 @@ namespace ConsoleApp1.Tests
             //assert
             Assert.AreEqual(expected, result);
         }
+
+        [DataTestMethod]
+        [DataRow(83, 2)]
+        [DataRow(40002938, 8)]
+        public void DigitalRoot_PositiveIntigerIsGiven_ReturnsItsDigitalRoot(int number, int expected)
+        {
+            //arrange
+
+            //act
+            int result = Program.DigitalRoot(number);
+
+            //assert
+            Assert.AreEqual(expected, result);
+        }
+
+        [DataTestMethod]
+        [DataRow(1, 2, 3, 4, 5, true)]
+        [DataRow(4, 9, 6, 3, 7, false)]
+        public void ThreeIncreasingAdjacent_ArrayOfIntigerIsGiven_ReturnsTrueIfThereAreThreeAdjacent(int a, int b, int c, int d, int e, bool expected)
+        {
+            //arrange
+            int[] numbers = { a, b, c, d, e };
+
+            //act
+            bool result = Program.ThreeIncreasingAdjacent(numbers);
+
+            //assert
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void ReturnEvenNumbers_ReturnsStringWithEvenNumbers()
+        {
+            //arrange
+            string expected = "2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50 52 54 56 58 60 62 64 66 68 70 72 74 76 78 80 82 84 86 88 90 92 94 96 98";
+
+            //act
+            string result = Program.ReturnEvenNumbers();
+
+            //assert
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void SieveOfEratosthenes_IntegerIsGiven_ReturnsArrayOfPrimeNumbers()
+        {
+            //arrange
+            int[] expected = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
+            int input = 30;
+            int expectedCount = 10;
+
+            //act
+            int[] result = Program.SieveOfEratosthenes(input);
+
+            //assert
+            Assert.AreEqual(expectedCount, result.Length);
+            Assert.AreEqual(expected[2], result[2]);
+            Assert.AreEqual(expected[5], result[5]);
+            Assert.AreEqual(expected[9], result[9]);
+        }
+
+        [DataTestMethod]
+        [DataRow("##abc##def", "abc")]
+        [DataRow("12####78", "")]
+        [DataRow("gar##d#en", "")]
+        [DataRow("++##--##++", "--")]
+        public void ExtractString_StringIsGiven_ReturnsContentBetweenDoubleHashtags(string input, string expected)
+        {
+            //arrange
+
+            //act
+            string result = Program.ExtractString(input);
+
+            //assert
+            Assert.AreEqual(expected, result);
+        }
     }
 }
